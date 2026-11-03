@@ -48,5 +48,7 @@ Dropped cards can settle below decorative floor debris or thin surface layers in
 
 ## Credits and licensing
 
-See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and the original model readme. A license for this project's own code has not yet been selected.
+The project's own source code is licensed under the [MIT License](LICENSE).
+
+The MIT License applies to the project's own code only. The model, textures, images and logos are subject to their respective licenses and rights; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and the original model readme.
 
