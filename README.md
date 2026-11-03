@@ -2,7 +2,7 @@
 
 ![Plastic Card](docs/cover.png)
 
-SPT 4.1.x server mod by **toortik**, version **2.1.1**.
+SPT 4.1.x server mod by **toortik**, version **2.0.0**.
 
 Replaces the models and textures of roubles, dollars and euros with bank cards. Increases the maximum stack size to **2,147,483,646 units of currency**.
 
