@@ -1,8 +1,10 @@
 param(
     [Parameter(Mandatory = $true)][string]$UnityEditor,
-    [string]$SptRuntimePath = 'C:\SPT\SPT_Runtime'
+    [Parameter(Mandatory = $true)][string]$SptRuntimePath
 )
 $ErrorActionPreference = 'Stop'
+if (!(Test-Path -LiteralPath $UnityEditor -PathType Leaf)) { throw 'UnityEditor must point to your Unity.exe.' }
+if (!(Test-Path -LiteralPath (Join-Path $SptRuntimePath 'SPTarkov.Server.Core.dll') -PathType Leaf)) { throw 'SptRuntimePath must point to the SPT_Runtime directory containing SPTarkov.Server.Core.dll.' }
 $projectRoot = $PSScriptRoot
 $unityProject = Join-Path $projectRoot 'UnityAssetBundleProject'
 $log = Join-Path $projectRoot 'unity-build.log'

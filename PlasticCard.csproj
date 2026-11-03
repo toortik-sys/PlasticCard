@@ -10,7 +10,6 @@
     <AssemblyName>PlasticCard</AssemblyName>
     <OutputPath>bin\$(Configuration)\PlasticCard\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <SptRuntimePath Condition="'$(SptRuntimePath)' == ''">C:\SPT\SPT_Runtime</SptRuntimePath>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="UnityAssetBundleProject\Assets\**\*.cs" />
@@ -37,6 +36,7 @@
     <None Update="bundles.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <Target Name="VerifySptRuntimeReferences" BeforeTargets="ResolveReferences">
+    <Error Condition="'$(SptRuntimePath)' == ''" Text="Set -p:SptRuntimePath to the full path of your SPT_Runtime directory." />
     <Error Condition="!Exists('$(SptRuntimePath)\SPTarkov.Server.Core.dll')" Text="SPTarkov.Server.Core.dll was not found under SptRuntimePath='$(SptRuntimePath)'. Pass -p:SptRuntimePath=... to the SPT_Runtime folder." />
     <Error Condition="!Exists('$(SptRuntimePath)\SemanticVersioning.dll')" Text="SemanticVersioning.dll was not found under SptRuntimePath='$(SptRuntimePath)'." />
   </Target>
