@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>PlasticCard</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
+    <Version>2.1.1</Version>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <AssemblyName>PlasticCard</AssemblyName>
+    <OutputPath>bin\$(Configuration)\PlasticCard\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <SptRuntimePath Condition="'$(SptRuntimePath)' == ''">C:\SPT\SPT_Runtime</SptRuntimePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="UnityAssetBundleProject\Assets\**\*.cs" />
+    <Reference Include="SPTarkov.Common">
+      <HintPath>$(SptRuntimePath)\SPTarkov.Common.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SPTarkov.DI">
+      <HintPath>$(SptRuntimePath)\SPTarkov.DI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SPTarkov.Server.Core">
+      <HintPath>$(SptRuntimePath)\SPTarkov.Server.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SemanticVersioning">
+      <HintPath>$(SptRuntimePath)\SemanticVersioning.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="UnityAssetBundleProject\**\*" />
+    <Content Include="bundles\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="bundles.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <Target Name="VerifySptRuntimeReferences" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(SptRuntimePath)\SPTarkov.Server.Core.dll')" Text="SPTarkov.Server.Core.dll was not found under SptRuntimePath='$(SptRuntimePath)'. Pass -p:SptRuntimePath=... to the SPT_Runtime folder." />
+    <Error Condition="!Exists('$(SptRuntimePath)\SemanticVersioning.dll')" Text="SemanticVersioning.dll was not found under SptRuntimePath='$(SptRuntimePath)'." />
+  </Target>
+</Project>

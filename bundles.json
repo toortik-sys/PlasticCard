@@ -1,0 +1,25 @@
+{
+  "manifest": [
+    {
+      "key": "Mods/roubles/rouble_magnet_card.bundle",
+      "dependencyKeys": [
+        "shaders",
+        "cubemaps"
+      ]
+    },
+    {
+      "key": "Mods/dollars/dollar_magnet_card.bundle",
+      "dependencyKeys": [
+        "shaders",
+        "cubemaps"
+      ]
+    },
+    {
+      "key": "Mods/euros/euro_magnet_card.bundle",
+      "dependencyKeys": ["shaders", "cubemaps"]
+    }
+  ]
+}
+
+
+
